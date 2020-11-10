@@ -1,33 +1,43 @@
 
+
 /**
  * Write a description of class Demon here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * 
+ * @author Sergius Manolov 
+ * @version 11/9/20
  */
-public class Demon
+public class Demon extends Creature
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private static final int MAX_DEMON_HP = 100;
+    private static final int MIN_DEMON_HP = 50;
+    private static final int MAX_DEMON_STR = 75;
+    private static final int MIN_DEMON_STR = 25;
 
     /**
-     * Constructor for objects of class Demon
+     * Constructor for objects of class DEMON
      */
     public Demon()
     {
-        // initialise instance variables
-        x = 0;
+        super(
+            Randomizer.nextInt(MAX_DEMON_STR-MIN_DEMON_STR)+MIN_DEMON_STR,
+            Randomizer.nextInt(MAX_DEMON_HP-MIN_DEMON_HP)+MIN_DEMON_HP
+        );
+          
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public Demon(int str, int hp) {
+           super(str, hp);
+    }
+    
+    public int damage() {
+           int tempdamage;
+           tempdamage = super.damage();
+           
+           if (Randomizer.nextInt(20)==0) {
+               System.err.println("DEMONIC STRENGTH!");
+               tempdamage +=50;
+            }
+           
+            return tempdamage;
     }
 }
