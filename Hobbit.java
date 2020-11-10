@@ -2,8 +2,8 @@
 /**
  * Write a description of class Hobbit here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Sergius Manolov
+ * @version 11/9/20
  */
 public class Hobbit extends Creature
 {
@@ -30,7 +30,7 @@ public class Hobbit extends Creature
            tempdamage = super.damage();
            
            if (Randomizer.nextInt(10)==0) {
-               System.err.println("Magic!");
+               System.err.println("Axe");
                tempdamage *=2;
             }
            
