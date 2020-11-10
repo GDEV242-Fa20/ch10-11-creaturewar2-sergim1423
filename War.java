@@ -30,6 +30,8 @@ public class War
                 goodArmy.add(new Human());
             } else if (temp < 18){
                 goodArmy.add(new Elf());
+            }else if (temp<19){
+                goodArmy.add(new Hobbit());
             }
             else{
                 goodArmy.add(new Wizard());

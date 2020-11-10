@@ -1,33 +1,55 @@
 
 /**
- * Write a description of class Wizard here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Extends from Creature. Has higher HP and strength. 
+ * 
+ * When doing damage, has a 1/30 chance of dealing Magic damage
+ * which triples the damage done.
+ * 
+ * When taking damage, has a 1/50 chance of casting Healing spell
+ * which adds 15 to health.
+ * 
+ * @author Sergius Manolov 
+ * @version 11/9/20
  */
-public class Wizard
+public class Wizard extends Creature
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private static final int MAX_WIZARD_HP = 70;
+    private static final int MIN_WIZARD_HP = 35;
+    private static final int MAX_WIZARD_STR = 27;
+    private static final int MIN_WIZARD_STR = 10;
 
     /**
-     * Constructor for objects of class Wizard
+     * Constructor for objects of class WIZARD
      */
     public Wizard()
     {
-        // initialise instance variables
-        x = 0;
+        super(
+            Randomizer.nextInt(MAX_WIZARD_STR-MIN_WIZARD_STR)+MIN_WIZARD_STR,
+            Randomizer.nextInt(MAX_WIZARD_HP-MIN_WIZARD_HP)+MIN_WIZARD_HP
+        );
+          
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    
+    public int damage() {
+           int tempdamage;
+           tempdamage = super.damage();
+           
+           if (Randomizer.nextInt(20)==0) {
+               System.err.println("Wizard Powers!");
+               tempdamage *=3;              
+            }
+           
+            return tempdamage;
+    }
+    
+    public void takeDamage(int damage)
     {
-        // put your code here
-        return x + y;
+        super.takeDamage(damage);
+        
+        if (Randomizer.nextInt(50)==0) {
+            super.takeDamage(-15);
+            System.err.println("Healing Spell!");
+        }
     }
 }
